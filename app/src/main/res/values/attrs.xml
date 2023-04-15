@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SnapProgressButton">
+        <attr name="text" format="string" />
+        <attr name="enabled" format="boolean" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="custom_text_color" format="color" />
+        <attr name="custom_button_type" format="enum">
+            <enum name="filled" value="0" />
+            <enum name="bordered" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SnapEditText">
+        <attr name="custom_type" format="enum">
+            <enum name="email" value="0" />
+            <enum name="password" value="1" />
+            <enum name="password_confirmation" value="2" />
+            <enum name="name" value="3" />
+        </attr>
+        <attr name="min_password_length" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="AppWidgetAttrs">
+        <attr name="appWidgetPadding" format="dimension" />
+        <attr name="appWidgetInnerRadius" format="dimension" />
+        <attr name="appWidgetRadius" format="dimension" />
+    </declare-styleable>
+</resources>

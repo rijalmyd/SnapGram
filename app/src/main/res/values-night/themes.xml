@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SnapGram" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/green_400</item>
+        <item name="colorPrimaryContainer">@color/green_400</item>
+        <item name="colorSecondaryContainer">@color/green_400</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+    </style>
+</resources>

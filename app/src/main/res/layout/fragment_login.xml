@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.auth.login.LoginFragment">
+
+    <TextView
+        android:id="@+id/text_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_title"
+        android:textSize="40sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/text_intro"
+        app:layout_constraintStart_toStartOf="@id/text_intro"
+        app:layout_constraintEnd_toEndOf="@id/text_intro" />
+
+    <TextView
+        android:id="@+id/text_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_intro"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ed_login_email" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapEditText
+        android:id="@+id/ed_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:custom_type="email"
+        app:layout_constraintBottom_toTopOf="@id/ed_login_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_height="64dp"/>
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapEditText
+        android:id="@+id/ed_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:custom_type="password"
+        app:min_password_length="8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_height="64dp"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        tools:text="Don't have an account? Register"
+        app:layout_constraintTop_toBottomOf="@id/ed_login_password"
+        app:layout_constraintStart_toStartOf="@id/ed_login_password"
+        app:layout_constraintEnd_toEndOf="@id/ed_login_password" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapProgressButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:text="@string/sign_in"
+        app:layout_constraintTop_toBottomOf="@id/tv_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

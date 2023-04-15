@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rijaldev.snapgram.presentation.auth.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_main_graph"
+            app:destination="@id/main_graph" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue=" " />
+        <argument
+            android:name="password"
+            app:argType="string"
+            android:defaultValue=" " />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.rijaldev.snapgram.presentation.auth.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <include app:graph="@navigation/main_graph"/>
+</navigation>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.addstory.upload.UploadFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_story"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        android:baselineAlignBottom="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@tools:sample/avatars"/>
+
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@null"
+        android:padding="16dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/close_upload_page" />
+
+    <ImageButton
+        android:id="@+id/button_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@null"
+        android:padding="16dp"
+        android:src="@drawable/ic_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/upload_your_story" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ed_add_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/white"
+        android:maxLines="5"
+        android:gravity="bottom"
+        android:inputType="textMultiLine|textCapSentences"
+        android:hint="@string/add_description"
+        android:drawableStart="@drawable/ic_note"
+        android:drawablePadding="16dp"
+        android:imeOptions="actionNext"
+        android:background="@drawable/bg_description_form"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/pb_circle"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:SpinKit_Color="@color/green_400"
+        app:SpinKit_Style="ThreeBounce"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SnapGram" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/green_400</item>
+        <item name="colorPrimaryContainer">@color/green_400</item>
+        <item name="colorSecondaryContainer">@color/green_400</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="Theme.SnapGram" parent="Base.Theme.SnapGram" />
+
+    <style name="Theme.SnapGram.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.SnapGram</item>
+    </style>
+
+    <style name="ToolbarSubtitleAppearance" parent="@style/TextAppearance.Material3.ActionBar.Subtitle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+</resources>

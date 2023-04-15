@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.auth.login.LoginFragment">
+
+    <TextView
+        android:id="@+id/text_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/register"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/text_intro"
+        app:layout_constraintEnd_toEndOf="@id/text_intro"
+        app:layout_constraintStart_toStartOf="@id/text_intro" />
+
+    <TextView
+        android:id="@+id/text_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/register_intro"
+        app:layout_constraintBottom_toTopOf="@id/ed_register_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapEditText
+        android:id="@+id/ed_register_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:custom_type="name"
+        app:layout_constraintBottom_toTopOf="@id/ed_register_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        tools:layout_height="64dp" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapEditText
+        android:id="@+id/ed_register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:custom_type="email"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        tools:layout_height="64dp" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapEditText
+        android:id="@+id/ed_register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:custom_type="password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:min_password_length="8"
+        tools:layout_height="64dp" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapEditText
+        android:id="@+id/ed_register_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/app_name"
+        app:custom_type="password_confirmation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ed_register_password"
+        app:min_password_length="8"
+        tools:layout_height="64dp" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@id/ed_register_password_confirm"
+        app:layout_constraintStart_toStartOf="@id/ed_register_password_confirm"
+        app:layout_constraintTop_toBottomOf="@id/ed_register_password_confirm"
+        tools:text="Already have an account? Sign In" />
+
+    <com.rijaldev.snapgram.presentation.customviews.SnapProgressButton
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_sign_in"
+        app:text="Register" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

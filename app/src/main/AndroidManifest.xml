@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SnapGram"
+        tools:targetApi="31">
+        <activity
+            android:name=".presentation.addstory.AddStoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.detail.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.auth.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.main.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.splash.RoutingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SnapGram.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".presentation.widget.StoryAppWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/story_app_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".presentation.widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            tools:node="merge"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false" />
+    </application>
+
+</manifest>

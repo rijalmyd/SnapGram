@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/cameraFragment">
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.rijaldev.snapgram.presentation.addstory.camera.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_cameraFragment_to_uploadFragment"
+            app:destination="@id/uploadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadFragment"
+        android:name="com.rijaldev.snapgram.presentation.addstory.upload.UploadFragment"
+        android:label="fragment_upload"
+        tools:layout="@layout/fragment_upload" >
+        <argument
+            android:name="imageResult"
+            app:argType="com.rijaldev.snapgram.presentation.addstory.upload.model.ImageResult" />
+    </fragment>
+</navigation>

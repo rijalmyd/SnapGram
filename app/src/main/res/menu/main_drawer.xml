@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/homeFragment"
+            android:title="@string/home"
+            android:icon="@drawable/ic_home"/>
+        <item android:id="@+id/mapsFragment"
+            android:title="@string/story_maps"
+            android:icon="@drawable/ic_location" />
+        <item
+            android:id="@+id/btnChangeLanguage"
+            android:title="@string/language"
+            android:icon="@drawable/ic_language" />
+    </group>
+</menu>

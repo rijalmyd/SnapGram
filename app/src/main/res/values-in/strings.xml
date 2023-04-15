@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SnapGram</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Sandi</string>
+    <string name="email_error">Format email tidak valid.</string>
+    <string name="password_error">Sandi harus minimal 8 karakter.</string>
+    <string name="password_confirmation_hint">Konfirmasi Password</string>
+    <string name="name">Nama</string>
+    <string name="name_error">Nama tidak boleh kosong!</string>
+    <string name="form_error">Form harus di isi dengan benar.</string>
+    <string name="login_title">Hello Again!</string>
+    <string name="login_intro">Welcome back you\'ve been missed!</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="register_intro">Connect your infinity world!</string>
+    <string name="add_new_story">Buat Cerita Baru</string>
+    <string name="home">Home</string>
+    <string name="story_maps">Story Maps</string>
+    <string name="language">Bahasa</string>
+    <string name="story_image">Story Image</string>
+    <string name="story_name">Story Name</string>
+    <string name="others">…Selengkapnya</string>
+    <string name="add_description">Tambahkan deskripsi…</string>
+    <string name="close_upload_page">Tutup Halaman Upload</string>
+    <string name="upload_your_story">Upload Ceritamu</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="empty_text">No Data</string>
+    <string name="close_camera">Tutup Camera</string>
+    <string name="take_a_photo">Ambil Gambar</string>
+    <string name="flip_to_front_camera">Pindah ke kamera depan</string>
+    <string name="pick_gallery">Ambil gambar dari galeri</string>
+    <string name="not_implemented_yet">Belum di implementasi.</string>
+    <string name="access_denied">Akses Ditolak</string>
+    <string name="taking_photo_failed">Gagal mengambil gambar</string>
+    <string name="open_camera_failed">Gagal memunculkan kamera.</string>
+    <string name="register_question">"Belum mempunyai akun? "</string>
+    <string name="password_must_same">Sandi harus sama.</string>
+    <string name="sign_in_question">"Sudah mempunyai akun? "</string>
+    <string name="sign_in_first">Kamu harus masuk terlebih dahulu!</string>
+    <string name="empty">Tidak ada cerita.</string>
+    <string name="data_empty">Data tidak boleh kosong</string>
+</resources>
