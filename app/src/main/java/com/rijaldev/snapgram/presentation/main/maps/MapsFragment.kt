@@ -59,8 +59,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             isCompassEnabled = true
         }
 
-        fetchStories()
         setMapStyle()
+        fetchStories()
     }
 
     private fun fetchStories() {
