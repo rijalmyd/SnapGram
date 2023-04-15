@@ -29,6 +29,8 @@ rxbinding = "2.0.0"
 rxjava = "2.2.19"
 swiperefreshlayout = "1.1.0"
 workRuntimeKtx = "2.8.1"
+com-google-android-libraries-mapsplatform-secrets-gradle-plugin = "2.0.1"
+play-services-maps = "18.1.0"
 
 [libraries]
 android-spinKit = { module = "com.github.ybq:Android-SpinKit", version.ref = "android-spinKit" }
@@ -64,10 +66,12 @@ readmore-textview = { module = "kr.co.prnd:readmore-textview", version.ref = "re
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converter-gson" }
 rxbinding = { module = "com.jakewharton.rxbinding2:rxbinding", version.ref = "rxbinding" }
 rxjava = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxjava" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-maps" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-application" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+com-google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "com-google-android-libraries-mapsplatform-secrets-gradle-plugin" }
 
 
 [bundles]

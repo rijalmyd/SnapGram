@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.android.libraries.mapsplatform.secrets.gradle.plugin)
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
@@ -99,4 +100,7 @@ dependencies {
 
     //Datastore
     implementation(libs.androidx.datastore.preferences)
+
+    //Maps
+    implementation libs.play.services.maps
 }

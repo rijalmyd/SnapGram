@@ -18,6 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SnapGram"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
         <activity
             android:name=".presentation.addstory.AddStoryActivity"
             android:exported="false" />
@@ -59,9 +63,9 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            tools:node="merge"
             android:authorities="${applicationId}.androidx-startup"
-            android:exported="false" />
+            android:exported="false"
+            tools:node="merge" />
     </application>
 
 </manifest>
