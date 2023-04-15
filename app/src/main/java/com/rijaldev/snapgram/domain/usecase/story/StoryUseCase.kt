@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.Flow
 interface StoryUseCase {
     fun getStories(): Flow<Result<List<Story>>>
 
+    fun getStoriesWithLocation(): Flow<Result<List<Story>>>
+
     fun getDetailStory(id: String): Flow<Result<Story>>
 
     fun uploadStory(story: StoryUploadRequest): Flow<Result<StoryUpload>>

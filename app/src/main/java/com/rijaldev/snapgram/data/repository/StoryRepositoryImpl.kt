@@ -21,11 +21,11 @@ class StoryRepositoryImpl @Inject constructor(
     private val userPreferences: UserPreferences,
 ) : StoryRepository {
 
-    override fun getStories() = flow {
+    override fun getStories(location: Int) = flow {
         emit(Result.Loading())
         try {
             val token = userPreferences.getToken().first()
-            val response = remoteDataSource.getStories(token.generateToken())
+            val response = remoteDataSource.getStories(token.generateToken(), location = location)
             val result = response.listStory.toDomainStory()
             emit(Result.Success(result))
         } catch (e: Exception) {
