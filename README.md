@@ -7,7 +7,7 @@ Belajar Pengembangan Aplikasi Android Intermediate Dicoding Academy Submission
 ## Local Configurations (local.properties) :
 ```
 BASE_URL=https://story-api.dicoding.dev/v1/
-MAPS_API_KEY=Aiza...(Your Maps API Key. [https://developers.google.com/maps/documentation/android-sdk/get-api-key?hl=id](See this))
+MAPS_API_KEY=Aiza...(Your Maps API Key. [See this](https://developers.google.com/maps/documentation/android-sdk/get-api-key?hl=id))
 ```
 
 ## Screenshots :
