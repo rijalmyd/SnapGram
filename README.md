@@ -4,7 +4,7 @@ Belajar Pengembangan Aplikasi Android Intermediate Dicoding Academy Submission
 > **Warning**
 > IF YOU ARE DOING ON THE SAME SUBMISSION, PLEASE USE THIS AS A REFERENCE. PLEASE DON'T COPY PASTE!
 
-## The first (1st) submission screenshots :
+## Screenshots :
 <table>
    <tr>
       <td><img src="screenshots/splash.jpg" align="center" alt="4"></td>
