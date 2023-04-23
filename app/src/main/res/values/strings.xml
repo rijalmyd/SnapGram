@@ -43,4 +43,6 @@
     <string name="scroll_to_top">Scroll to Top</string>
     <string name="location">Location</string>
     <string name="location_not_found_error">Location not found.</string>
+    <string name="gps_error">You must turn on the GPS!</string>
+    <string name="wait">Wait…</string>
 </resources>

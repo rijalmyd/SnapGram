@@ -28,7 +28,7 @@ class StoryAdapter(
 
     inner class ViewHolder(private val binding: ItemStoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(story: Story?) {
-            binding.apply {
+            with(binding) {
                 Glide.with(itemView.context)
                     .load(story?.photoUrl)
                     .placeholder(R.drawable.bg_image_loading)

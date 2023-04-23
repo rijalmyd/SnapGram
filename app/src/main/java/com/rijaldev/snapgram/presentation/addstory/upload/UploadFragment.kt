@@ -163,8 +163,8 @@ class UploadFragment : Fragment() {
         ActivityResultContracts.StartIntentSenderForResult()
     ) { result ->
         when (result.resultCode) {
-            Activity.RESULT_OK -> showSnackBar("Wait...")
-            Activity.RESULT_CANCELED -> showSnackBar("You must turn on the GPS!")
+            Activity.RESULT_OK -> showSnackBar(getString(R.string.wait))
+            Activity.RESULT_CANCELED -> showSnackBar(getString(R.string.gps_error))
         }
     }
 
@@ -180,15 +180,11 @@ class UploadFragment : Fragment() {
         val client = LocationServices.getSettingsClient(requireActivity())
 
         client.checkLocationSettings(builder.build())
-            .addOnSuccessListener {
-                getMyLastLocation()
-            }
-            .addOnFailureListener { exception ->
-                if (exception is ResolvableApiException) {
+            .addOnSuccessListener { getMyLastLocation() }
+            .addOnFailureListener { e ->
+                if (e is ResolvableApiException) {
                     try {
-                        resolutionLauncher.launch(
-                            IntentSenderRequest.Builder(exception.resolution).build()
-                        )
+                        resolutionLauncher.launch(IntentSenderRequest.Builder(e.resolution).build())
                     } catch (e: IntentSender.SendIntentException) {
                         showSnackBar(e.message)
                     }
@@ -201,10 +197,8 @@ class UploadFragment : Fragment() {
             and checkPermission(Manifest.permission.ACCESS_FINE_LOCATION)
         ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                if (location != null) {
-                    this.location = location
-                }
-                else showSnackBar(getString(R.string.location_not_found_error))
+                this.location = location
+                if (location == null) showSnackBar(getString(R.string.location_not_found_error))
             }
         } else {
             requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)

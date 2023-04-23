@@ -44,4 +44,6 @@
     <string name="scroll_to_top">Naik ke Atas</string>
     <string name="location">Lokasi</string>
     <string name="location_not_found_error">Lokasi tidak ditemukan.</string>
+    <string name="gps_error">Kamu harus mengaktifkan GPS!</string>
+    <string name="wait">Tunggu sebentar…</string>
 </resources>
