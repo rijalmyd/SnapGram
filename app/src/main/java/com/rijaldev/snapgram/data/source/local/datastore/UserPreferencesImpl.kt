@@ -1,4 +1,4 @@
-package com.rijaldev.snapgram.data.local.datastore
+package com.rijaldev.snapgram.data.source.local.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -10,7 +10,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserPreferencesImpl @Inject constructor(private val dataStore: DataStore<Preferences>) : UserPreferences {
+class UserPreferencesImpl @Inject constructor(private val dataStore: DataStore<Preferences>) :
+    UserPreferences {
 
     override suspend fun saveToken(token: String) {
         dataStore.edit {

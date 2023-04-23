@@ -1,4 +1,4 @@
-package com.rijaldev.snapgram.data.local.datastore
+package com.rijaldev.snapgram.data.source.local.datastore
 
 import kotlinx.coroutines.flow.Flow
 

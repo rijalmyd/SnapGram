@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/homeFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.main.home.HomeFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -16,7 +18,23 @@
             android:layout_height="0dp"
             android:paddingBottom="96dp"
             android:clipToPadding="false"
-            tools:listitem="@layout/item_story"/>
+            tools:listitem="@layout/item_story" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_scroll_to_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/scroll_to_top"
+        android:textColor="@color/black"
+        android:visibility="visible"
+        app:icon="@drawable/ic_upward"
+        app:iconTint="@color/black"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/scroll_to_top"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

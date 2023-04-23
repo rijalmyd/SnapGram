@@ -1,7 +1,7 @@
-package com.rijaldev.snapgram.data.remote
+package com.rijaldev.snapgram.data.source.remote
 
-import com.rijaldev.snapgram.data.remote.response.StoryUploadResponse
-import com.rijaldev.snapgram.data.remote.retrofit.ApiService
+import com.rijaldev.snapgram.data.source.remote.response.StoryUploadResponse
+import com.rijaldev.snapgram.data.source.remote.retrofit.ApiService
 import com.rijaldev.snapgram.domain.model.story.StoryUploadRequest
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull

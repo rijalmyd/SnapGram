@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.rijaldev.snapgram.data.local.datastore.UserPreferences
-import com.rijaldev.snapgram.data.local.datastore.UserPreferencesImpl
+import com.rijaldev.snapgram.data.source.local.datastore.UserPreferences
+import com.rijaldev.snapgram.data.source.local.datastore.UserPreferencesImpl
 import com.rijaldev.snapgram.util.Constants.USER_PREFERENCES
 import dagger.Binds
 import dagger.Module

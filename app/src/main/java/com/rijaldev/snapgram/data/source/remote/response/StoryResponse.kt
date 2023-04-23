@@ -1,23 +1,23 @@
-package com.rijaldev.snapgram.data.remote.response
+package com.rijaldev.snapgram.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
 data class StoryResponse(
 
-	@field:SerializedName("listStory")
+    @field:SerializedName("listStory")
 	val listStory: List<StoryItem>,
 
-	@field:SerializedName("error")
+    @field:SerializedName("error")
 	val error: Boolean? = null,
 
-	@field:SerializedName("message")
+    @field:SerializedName("message")
 	val message: String? = null
 )
 
 data class StoryItem(
 
 	@field:SerializedName("id")
-	val id: String? = null,
+	val id: String,
 
 	@field:SerializedName("name")
 	val name: String? = null,
