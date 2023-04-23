@@ -1,7 +1,7 @@
 package com.rijaldev.snapgram.di
 
 import com.rijaldev.snapgram.BuildConfig
-import com.rijaldev.snapgram.data.remote.retrofit.ApiService
+import com.rijaldev.snapgram.data.source.remote.retrofit.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

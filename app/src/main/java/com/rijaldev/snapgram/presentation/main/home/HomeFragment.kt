@@ -5,17 +5,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.google.android.material.snackbar.Snackbar
 import com.rijaldev.snapgram.R
 import com.rijaldev.snapgram.databinding.FragmentHomeBinding
-import com.rijaldev.snapgram.domain.common.Result
 import com.rijaldev.snapgram.domain.model.story.Story
+import com.rijaldev.snapgram.presentation.adapter.LoadingStateAdapter
 import com.rijaldev.snapgram.presentation.adapter.StoryAdapter
 import com.rijaldev.snapgram.presentation.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,60 +49,79 @@ class HomeFragment : Fragment() {
 
         setUpRecyclerView()
 
-        binding?.swipeRefresh?.setOnRefreshListener {
-            viewModel.getStories()
-        }
-
-        showRefreshing(true)
-        viewModel.getStories()
         viewModel.stories.observe(viewLifecycleOwner, storyObserver)
     }
 
     private fun setUpRecyclerView() {
         storyAdapter = StoryAdapter { id, ivStory, tvName ->
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                requireActivity(),
-                Pair(ivStory, getString(R.string.story_image)),
-                Pair(tvName, getString(R.string.story_name))
-            ).toBundle()
-
-            val intent = Intent(requireActivity(), DetailActivity::class.java).apply {
-                putExtra(DetailActivity.EXTRA_ID, id)
-            }
-
-            requireActivity().startActivity(intent, options)
+            handleMovingPage(id, ivStory, tvName)
         }
-
-        binding?.rvStory?.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            setHasFixedSize(true)
-            adapter = storyAdapter
+        val footerAdapter = LoadingStateAdapter {
+            storyAdapter.retry()
         }
-    }
-
-    private val storyObserver = Observer<Result<List<Story>?>> { result ->
-        when (result) {
-            is Result.Loading -> {}
-            is Result.Success -> {
-                showRefreshing(false)
-                val stories = result.data
-                storyAdapter.submitList(stories)
-                if (stories.isNullOrEmpty()) showError(getString(R.string.empty))
-            }
-            is Result.Error -> {
-                showRefreshing(false)
-                showError(result.message)
+        val gridLayoutManager = GridLayoutManager(context, 2)
+        gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return if (position == storyAdapter.itemCount && footerAdapter.itemCount > 0) 2
+                else 1
             }
         }
-    }
 
-    private fun showRefreshing(isRefreshing: Boolean) {
+        storyAdapter.addLoadStateListener {
+            if (it.source.refresh is LoadState.NotLoading && it.append.endOfPaginationReached && storyAdapter.itemCount < 1) {
+                showSnackBar(getString(R.string.empty))
+            }
+        }
+
         binding?.apply {
-            swipeRefresh.isRefreshing = isRefreshing
+            swipeRefresh.setOnRefreshListener {
+                storyAdapter.refresh()
+            }
+            rvStory.apply {
+                layoutManager = gridLayoutManager
+                setHasFixedSize(true)
+                adapter = storyAdapter.withLoadStateFooter(footerAdapter)
+            }
+            btnScrollToTop.setOnClickListener {
+                rvStory.smoothScrollToPosition(0)
+            }
+            rvStory.addOnScrollListener(object : OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    btnScrollToTop.isVisible = dy < 0 && recyclerView.isNotAtTop()
+                }
+            })
         }
     }
 
-    private fun showError(message: String?) {
+    private fun RecyclerView.isNotAtTop() = canScrollVertically(-1)
+
+    private fun handleMovingPage(id: String?, ivStory: ImageView?, tvName: TextView?) {
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            requireActivity(),
+            Pair(ivStory, getString(R.string.story_image)),
+            Pair(tvName, getString(R.string.story_name))
+        ).toBundle()
+
+        val intent = Intent(requireActivity(), DetailActivity::class.java).apply {
+            putExtra(DetailActivity.EXTRA_ID, id)
+        }
+
+        requireActivity().startActivity(intent, options)
+    }
+
+    private val storyObserver = Observer<PagingData<Story>> { result ->
+        storyAdapter.submitData(lifecycle, result)
+        hideRefreshing()
+    }
+
+    private fun hideRefreshing() {
+        binding?.apply {
+            swipeRefresh.isRefreshing = false
+        }
+    }
+
+    private fun showSnackBar(message: String?) {
         Snackbar.make(
             requireActivity().window.decorView,
             message.toString(),

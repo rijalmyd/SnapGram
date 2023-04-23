@@ -41,7 +41,12 @@ class StoryAppWidget : AppWidgetProvider() {
                     putExtra(DetailActivity.EXTRA_ID, storyId)
                 }
                 val pendingIntent = PendingIntent.getActivity(
-                    context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT
+                    context,
+                    0,
+                    mIntent,
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    } else 0
                 )
                 pendingIntent.send()
             }

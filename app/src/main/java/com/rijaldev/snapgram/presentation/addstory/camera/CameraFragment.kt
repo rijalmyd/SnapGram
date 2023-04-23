@@ -23,10 +23,7 @@ import androidx.navigation.fragment.findNavController
 import com.rijaldev.snapgram.R
 import com.rijaldev.snapgram.databinding.FragmentCameraBinding
 import com.rijaldev.snapgram.presentation.addstory.upload.model.ImageResult
-import com.rijaldev.snapgram.util.createFile
-import com.rijaldev.snapgram.util.rotateBitmap
-import com.rijaldev.snapgram.util.toBitmap
-import com.rijaldev.snapgram.util.toFile
+import com.rijaldev.snapgram.util.*
 
 class CameraFragment : Fragment() {
 
@@ -125,6 +122,7 @@ class CameraFragment : Fragment() {
     }
 
     private fun takePhoto() {
+        EspressoIdlingResource.increment()
         val imageCapture = imageCapture ?: return
 
         val photoFile = createFile(requireActivity().application)
@@ -140,6 +138,7 @@ class CameraFragment : Fragment() {
                         cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
                     )
                     moveToUpload(ImageResult(photoFile, imageBitmap = rotatedBitmap))
+                    EspressoIdlingResource.decrement()
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -148,6 +147,7 @@ class CameraFragment : Fragment() {
                         getString(R.string.taking_photo_failed),
                         Toast.LENGTH_SHORT
                     ).show()
+                    EspressoIdlingResource.decrement()
                 }
             }
         )

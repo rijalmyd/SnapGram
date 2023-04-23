@@ -3,10 +3,10 @@ package com.rijaldev.snapgram.presentation.main.maps
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -96,22 +96,26 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             val latLng = LatLng(story.lat ?: return, story.lon ?: return)
 
             viewLifecycleOwner.lifecycleScope.launch {
-                val bitmap = withContext(Dispatchers.IO) {
-                    Glide.with(requireActivity())
-                        .asBitmap()
-                        .load(story.photoUrl)
-                        .override(100, 100)
-                        .circleCrop()
-                        .submit()
-                        .get()
-                }
+                try {
+                    val bitmap = withContext(Dispatchers.IO) {
+                        Glide.with(requireActivity())
+                            .asBitmap()
+                            .load(story.photoUrl)
+                            .override(100, 100)
+                            .circleCrop()
+                            .submit()
+                            .get()
+                    }
 
-                map.addMarker(
-                    MarkerOptions()
-                        .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
-                        .position(latLng)
-                        .title(story.name)
-                )
+                    map.addMarker(
+                        MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
+                            .position(latLng)
+                            .title(story.name)
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

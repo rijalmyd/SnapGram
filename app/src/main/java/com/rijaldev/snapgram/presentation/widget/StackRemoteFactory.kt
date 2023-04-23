@@ -39,7 +39,7 @@ internal class StackRemoteFactory(
             stories.clear()
             storiesBitmap.addAll(bitmap)
             stories.addAll(result)
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 

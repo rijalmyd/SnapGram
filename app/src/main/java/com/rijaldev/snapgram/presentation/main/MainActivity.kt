@@ -89,7 +89,6 @@ class MainActivity : AppCompatActivity() {
             val currentIsHome = navController.currentDestination?.id == homeFragmentId
             when {
                 !currentIsHome -> navController.navigateUp()
-                else -> recreate()
             }
         }
     }

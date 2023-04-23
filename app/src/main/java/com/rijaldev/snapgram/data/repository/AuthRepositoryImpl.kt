@@ -1,12 +1,12 @@
 package com.rijaldev.snapgram.data.repository
 
-import com.rijaldev.snapgram.data.local.datastore.UserPreferences
-import com.rijaldev.snapgram.data.remote.RemoteDataSource
+import com.rijaldev.snapgram.data.source.local.datastore.UserPreferences
+import com.rijaldev.snapgram.data.source.remote.RemoteDataSource
 import com.rijaldev.snapgram.domain.common.Result
 import com.rijaldev.snapgram.domain.repository.AuthRepository
 import com.rijaldev.snapgram.util.getErrorMessage
-import com.rijaldev.snapgram.util.toDomainLogin
-import com.rijaldev.snapgram.util.toDomainRegister
+import com.rijaldev.snapgram.util.toLoginDomain
+import com.rijaldev.snapgram.util.toRegisterDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -24,7 +24,7 @@ class AuthRepositoryImpl @Inject constructor(
         emit(Result.Loading())
         try {
             val response = remoteDataSource.register(name, email, password)
-            val result = response.toDomainRegister()
+            val result = response.toRegisterDomain()
 
             emit(Result.Success(result))
         } catch (e: HttpException) {
@@ -38,7 +38,7 @@ class AuthRepositoryImpl @Inject constructor(
         emit(Result.Loading())
         try {
             val response = remoteDataSource.login(email, password)
-            val result = response.toDomainLogin()
+            val result = response.toLoginDomain()
             userPreferences.run {
                 saveToken(result.token.toString())
                 setLoginStatus(true)

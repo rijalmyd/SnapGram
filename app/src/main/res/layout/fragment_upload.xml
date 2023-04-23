@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/uploadFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.addstory.upload.UploadFragment">
 
@@ -60,6 +61,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switch_gps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_description_form"
+        android:text="@string/location"
+        app:switchPadding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/ed_add_description"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/pb_circle"

@@ -1,10 +1,10 @@
-package com.rijaldev.snapgram.data.remote.retrofit
+package com.rijaldev.snapgram.data.source.remote.retrofit
 
-import com.rijaldev.snapgram.data.remote.response.DetailStoryResponse
-import com.rijaldev.snapgram.data.remote.response.LoginResponse
-import com.rijaldev.snapgram.data.remote.response.RegisterResponse
-import com.rijaldev.snapgram.data.remote.response.StoryResponse
-import com.rijaldev.snapgram.data.remote.response.StoryUploadResponse
+import com.rijaldev.snapgram.data.source.remote.response.DetailStoryResponse
+import com.rijaldev.snapgram.data.source.remote.response.LoginResponse
+import com.rijaldev.snapgram.data.source.remote.response.RegisterResponse
+import com.rijaldev.snapgram.data.source.remote.response.StoryResponse
+import com.rijaldev.snapgram.data.source.remote.response.StoryUploadResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Field

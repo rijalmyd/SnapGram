@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.rijaldev.snapgram.R
 import com.rijaldev.snapgram.databinding.ItemStoryBinding
 import com.rijaldev.snapgram.domain.model.story.Story
 
 class StoryAdapter(
     private val onItemClicked: (id: String?, ivStory: ImageView?, tvName: TextView?) -> Unit
-) : ListAdapter<Story, StoryAdapter.ViewHolder>(DIFF_CALLBACK) {
+) : PagingDataAdapter<Story, StoryAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -27,23 +27,23 @@ class StoryAdapter(
     }
 
     inner class ViewHolder(private val binding: ItemStoryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(story: Story) {
+        fun bind(story: Story?) {
             binding.apply {
                 Glide.with(itemView.context)
-                    .load(story.photoUrl)
-                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .load(story?.photoUrl)
+                    .placeholder(R.drawable.bg_image_loading)
                     .into(ivItemPhoto)
-                tvItemName.text = story.name
+                tvItemName.text = story?.name
 
                 itemView.setOnClickListener {
-                    onItemClicked(story.id, ivItemPhoto, tvItemName)
+                    onItemClicked(story?.id, ivItemPhoto, tvItemName)
                 }
             }
         }
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Story>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Story>() {
             override fun areItemsTheSame(oldItem: Story, newItem: Story) =
                 oldItem.id == newItem.id
 

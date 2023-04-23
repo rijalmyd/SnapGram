@@ -1,4 +1,4 @@
-package com.rijaldev.snapgram.data.remote.response
+package com.rijaldev.snapgram.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 

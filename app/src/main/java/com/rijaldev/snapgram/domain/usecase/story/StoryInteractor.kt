@@ -8,7 +8,7 @@ class StoryInteractor @Inject constructor(private val storyRepository: StoryRepo
 
     override fun getStories() = storyRepository.getStories()
 
-    override fun getStoriesWithLocation() = storyRepository.getStories(1)
+    override fun getStoriesWithLocation() = storyRepository.getStoriesWithLocation()
 
     override fun getDetailStory(id: String) = storyRepository.getDetailStory(id)
 

@@ -31,7 +31,6 @@
     <string name="take_a_photo">Ambil Gambar</string>
     <string name="flip_to_front_camera">Pindah ke kamera depan</string>
     <string name="pick_gallery">Ambil gambar dari galeri</string>
-    <string name="not_implemented_yet">Belum di implementasi.</string>
     <string name="access_denied">Akses Ditolak</string>
     <string name="taking_photo_failed">Gagal mengambil gambar</string>
     <string name="open_camera_failed">Gagal memunculkan kamera.</string>
@@ -41,4 +40,8 @@
     <string name="sign_in_first">Kamu harus masuk terlebih dahulu!</string>
     <string name="empty">Tidak ada cerita.</string>
     <string name="data_empty">Data tidak boleh kosong</string>
+    <string name="retry">Coba lagi</string>
+    <string name="scroll_to_top">Naik ke Atas</string>
+    <string name="location">Lokasi</string>
+    <string name="location_not_found_error">Lokasi tidak ditemukan.</string>
 </resources>

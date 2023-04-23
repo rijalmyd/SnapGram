@@ -30,7 +30,6 @@
     <string name="take_a_photo">Take a Photo</string>
     <string name="flip_to_front_camera">Flip to Front Camera</string>
     <string name="pick_gallery">Pick a photo from gallery</string>
-    <string name="not_implemented_yet">Not implemented yet.</string>
     <string name="access_denied">Access Denied</string>
     <string name="taking_photo_failed">Failed to take a photo</string>
     <string name="open_camera_failed">Failed to open camera.</string>
@@ -40,4 +39,8 @@
     <string name="sign_in_first">You have to sign in first!</string>
     <string name="empty">No Data Story</string>
     <string name="data_empty">Data cannot be empty</string>
+    <string name="retry">Try again</string>
+    <string name="scroll_to_top">Scroll to Top</string>
+    <string name="location">Location</string>
+    <string name="location_not_found_error">Location not found.</string>
 </resources>
