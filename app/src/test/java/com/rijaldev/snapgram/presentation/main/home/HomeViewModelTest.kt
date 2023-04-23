@@ -62,7 +62,7 @@ class HomeViewModelTest {
 
         assertNotNull(differ.snapshot())
         assertEquals(dummyStories.size, differ.snapshot().size)
-        assertEquals(dummyStories[0].name, differ.snapshot()[0]?.name)
+        assertEquals(dummyStories[0], differ.snapshot()[0])
     }
 
     @Test
