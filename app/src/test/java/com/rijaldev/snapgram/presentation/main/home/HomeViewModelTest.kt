@@ -6,8 +6,10 @@ import androidx.paging.AsyncPagingDataDiffer
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ListUpdateCallback
 import com.rijaldev.snapgram.domain.model.story.Story
+import com.rijaldev.snapgram.domain.usecase.auth.AuthUseCase
 import com.rijaldev.snapgram.domain.usecase.story.StoryUseCase
 import com.rijaldev.snapgram.presentation.adapter.StoryAdapter
+import com.rijaldev.snapgram.presentation.main.MainViewModel
 import com.rijaldev.snapgram.util.DataDummy
 import com.rijaldev.snapgram.util.MainDispatcherRule
 import com.rijaldev.snapgram.util.getOrAwaitValue
@@ -16,7 +18,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,7 +27,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class HomeViewModelTest {
+class MainViewModelTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -36,12 +37,8 @@ class HomeViewModelTest {
 
     @Mock
     private lateinit var storyUseCase: StoryUseCase
-    private lateinit var viewModel: HomeViewModel
-
-    @Before
-    fun setUp() {
-        viewModel = HomeViewModel(storyUseCase)
-    }
+    @Mock
+    private lateinit var authUseCase: AuthUseCase
 
     @Test
     fun `when Get Story Should Not Null and Return Data`() = runTest {
@@ -51,6 +48,7 @@ class HomeViewModelTest {
         expectedStory.value = data
 
         `when`(storyUseCase.getStories()).thenReturn(flowOf(data))
+        val viewModel = MainViewModel(authUseCase, storyUseCase)
 
         val actualStory = viewModel.stories.getOrAwaitValue()
         val differ = AsyncPagingDataDiffer(
@@ -62,7 +60,7 @@ class HomeViewModelTest {
 
         assertNotNull(differ.snapshot())
         assertEquals(dummyStories.size, differ.snapshot().size)
-        assertEquals(dummyStories[0].name, differ.snapshot()[0]?.name)
+        assertEquals(dummyStories[0], differ.snapshot()[0])
     }
 
     @Test
@@ -72,6 +70,7 @@ class HomeViewModelTest {
         expectedStory.value = data
 
         `when`(storyUseCase.getStories()).thenReturn(flowOf(data))
+        val viewModel = MainViewModel(authUseCase, storyUseCase)
 
         val actualStory = viewModel.stories.getOrAwaitValue()
         val differ = AsyncPagingDataDiffer(
@@ -86,6 +85,7 @@ class HomeViewModelTest {
 }
 
 val noopListUpdateCallback = object : ListUpdateCallback {
+
     override fun onInserted(position: Int, count: Int) {}
 
     override fun onRemoved(position: Int, count: Int) {}
