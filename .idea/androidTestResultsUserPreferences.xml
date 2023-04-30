@@ -23,6 +23,7 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="192.168.1.5:38607" value="120" />
                   <entry key="192.168.1.5:45182" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Tests" value="360" />

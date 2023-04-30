@@ -1,5 +1,4 @@
 package com.rijaldev.snapgram.presentation.main.home
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -26,6 +25,7 @@ import com.rijaldev.snapgram.domain.model.story.Story
 import com.rijaldev.snapgram.presentation.adapter.LoadingStateAdapter
 import com.rijaldev.snapgram.presentation.adapter.StoryAdapter
 import com.rijaldev.snapgram.presentation.detail.DetailActivity
+import com.rijaldev.snapgram.presentation.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
-    private val viewModel by viewModels<HomeViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
     private lateinit var storyAdapter: StoryAdapter
 
     override fun onCreateView(

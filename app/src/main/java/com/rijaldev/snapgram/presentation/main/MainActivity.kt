@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             when {
                 !currentIsHome -> navController.navigateUp()
             }
+            viewModel.refreshStories()
         }
     }
 
